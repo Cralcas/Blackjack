@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Angkor&display=swap");
 
 * {
+  font-family: "Angkor", serif;
+  text-shadow: black 2px 2px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -8,11 +10,8 @@
 
 body {
   font-size: 1.5rem;
-  font-family: "Angkor", serif;
-  text-shadow: white 2px 1px;
   color: #fff;
   text-align: center;
-  text-shadow: black 2px 2px;
 
   background: radial-gradient(
     circle,
@@ -25,9 +24,21 @@ body {
 
 h1 {
   color: #000;
-  text-shadow: white 2px 1px;
+  text-shadow: none;
 }
 
 #message-el {
   font-style: italic;
+}
+
+button {
+  color: #fff;
+  background-color: rgb(172, 43, 69);
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  font-size: 1rem;
+  box-shadow: black 2px 2px;
 }
