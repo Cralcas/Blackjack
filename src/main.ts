@@ -5,9 +5,11 @@ let player: { name: string; chips: number } = {
   chips: 200,
 };
 
-let cards: number[] = [4, 2];
+let cards: number[] = [];
 let sum: number = 0;
 let message: string = "";
+let hasBlackJack: boolean = false;
+let possibleWin: boolean = false;
 
 let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
@@ -16,6 +18,35 @@ let playerEl = document.getElementById("player-el");
 
 if (playerEl !== null) {
   playerEl.innerText = player.name + ": $" + player.chips;
+}
+
+function startGame() {
+  possibleWin = true;
+  let firstCard: number = getRandomCard();
+  let secondCard: number = getRandomCard();
+  cards = [firstCard, secondCard];
+  sum = firstCard + secondCard;
+  renderGame();
+}
+
+function getRandomCard() {
+  let randomNumber: number = Math.floor(Math.random() * 13) + 1;
+  if (randomNumber > 10) {
+    return 10;
+  } else if (randomNumber === 1) {
+    return 11;
+  } else {
+    return randomNumber;
+  }
+}
+
+function newCard() {
+  if (possibleWin && !hasBlackJack) {
+    let card: number = getRandomCard();
+    sum += card;
+    cards.push(card);
+    renderGame();
+  }
 }
 
 function renderGame() {
@@ -34,8 +65,10 @@ function renderGame() {
       message = "Do you want to draw a new card?";
     } else if (sum === 21) {
       message = "You've got Blackjack!";
+      hasBlackJack = true;
     } else {
       message = "You're out of the game!";
+      possibleWin = false;
     }
 
     if (messageEl !== null) {
@@ -48,4 +81,5 @@ function renderGame() {
   }
 }
 
-renderGame();
+document.getElementById("start-game-btn")?.addEventListener("click", startGame);
+document.getElementById("new-card-btn")?.addEventListener("click", newCard);
