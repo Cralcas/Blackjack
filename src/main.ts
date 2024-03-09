@@ -21,6 +21,8 @@ if (playerEl !== null) {
 }
 
 function startGame() {
+  messageEl?.classList.remove("youLose");
+  messageEl?.classList.remove("youWin");
   possibleWin = true;
   let firstCard: number = getRandomCard();
   let secondCard: number = getRandomCard();
@@ -65,9 +67,11 @@ function renderGame() {
       message = "Do you want to draw a new card?";
     } else if (sum === 21) {
       message = "You've got Blackjack!";
+      messageEl?.classList.add("youWin");
       hasBlackJack = true;
     } else {
       message = "You're out of the game!";
+      messageEl?.classList.add("youLose");
       possibleWin = false;
     }
 
