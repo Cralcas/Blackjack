@@ -11,10 +11,10 @@ let message: string = "";
 let hasBlackJack: boolean = false;
 let possibleWin: boolean = false;
 
-let messageEl = document.getElementById("message-el");
-let sumEl = document.getElementById("sum-el");
-let cardsEl = document.getElementById("cards-el");
-let playerEl = document.getElementById("player-el");
+const messageEl = document.getElementById("message-el");
+const sumEl = document.getElementById("sum-el");
+const cardsEl = document.getElementById("cards-el");
+const playerEl = document.getElementById("player-el");
 
 if (playerEl !== null) {
   playerEl.innerText = player.name + ": $" + player.chips;
